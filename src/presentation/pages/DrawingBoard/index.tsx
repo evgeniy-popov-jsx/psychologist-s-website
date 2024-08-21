@@ -18,9 +18,9 @@ export const DrawingBoard: React.FC = observer(() => {
     }
   }, []);
 
-  const handleColorChange = (newColor: Color) => {
+  const handleColorChangeBrush = (newColor: Color) => {
     setColor(newColor);
-    drawingStore.setColor(convertColorToString(newColor));
+    drawingStore.setBrushColor(convertColorToString(newColor));
   };
 
   const handleColorChangeBg = (newColor: Color) => {
@@ -88,7 +88,7 @@ export const DrawingBoard: React.FC = observer(() => {
         style={{ zIndex: 1 }}
       />
       <Styled.ToolBtn>
-        <ColorPicker value={color} onChange={handleColorChange} disabledAlpha />
+        <ColorPicker value={color} onChange={handleColorChangeBrush} disabledAlpha />
         <ColorPicker value={colorBg} onChange={handleColorChangeBg} disabledAlpha />
         <Styled.Button onClick={handleToggleEraser}>
           {drawingStore.isErasing ? 'Рисовать' : 'Ластик'}

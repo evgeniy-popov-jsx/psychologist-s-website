@@ -86,7 +86,7 @@ class DrawingStore {
     }
   }
 
-  setColor(color: string) {
+  setBrushColor(color: string) {
     this.brushColor = color;
     if (this.drawingContext) {
       this.drawingContext.strokeStyle = color;
