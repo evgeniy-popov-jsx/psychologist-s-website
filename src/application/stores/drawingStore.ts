@@ -1,86 +1,139 @@
 import { makeAutoObservable } from 'mobx';
 
 class DrawingStore {
-  canvas: HTMLCanvasElement | null = null;
-  context: CanvasRenderingContext2D | null = null;
+  backgroundCanvas: HTMLCanvasElement | null = null;
+  drawingCanvas: HTMLCanvasElement | null = null;
+  backgroundContext: CanvasRenderingContext2D | null = null;
+  drawingContext: CanvasRenderingContext2D | null = null;
   isDrawing: boolean = false;
+  isErasing: boolean = false;
+  brushColor: string = '#ffffff';
+  backgroundColor: string = '#af3434';
+  currentLineWidth: number = 1;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setCanvas(canvas: HTMLCanvasElement) {
-    this.canvas = canvas;
-    this.context = canvas.getContext('2d');
-    if (this.context) {
-      this.initCanvas();
+  setCanvases(backgroundCanvas: HTMLCanvasElement, drawingCanvas: HTMLCanvasElement) {
+    this.backgroundCanvas = backgroundCanvas;
+    this.drawingCanvas = drawingCanvas;
+    this.backgroundContext = backgroundCanvas.getContext('2d');
+    this.drawingContext = drawingCanvas.getContext('2d');
+
+    if (this.backgroundContext && this.drawingContext) {
+      this.initCanvases();
     }
   }
 
-  initCanvas() {
-    if (!this.canvas || !this.context) return;
-    this.canvas.width = window.innerWidth * 2;
-    this.canvas.height = window.innerHeight * 2;
-    this.canvas.style.width = `${window.innerWidth}px`;
-    this.canvas.style.height = `${window.innerHeight}px`;
-    this.context.scale(2, 2);
-    this.context.lineCap = 'round';
-    this.context.strokeStyle = 'green';
-    this.context.lineWidth = 5;
+  initCanvases() {
+    if (!this.backgroundCanvas || !this.drawingCanvas || !this.backgroundContext || !this.drawingContext) return;
+
+    [this.backgroundCanvas, this.drawingCanvas].forEach(canvas => {
+      canvas.width = window.innerWidth * 2;
+      canvas.height = window.innerHeight * 2;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+    });
+
+    this.backgroundContext.scale(2, 2);
+    this.drawingContext.scale(2, 2);
+    this.drawingContext.lineCap = 'round';
+    this.drawingContext.strokeStyle = this.brushColor;
+    this.drawingContext.lineWidth = this.currentLineWidth;
+
+    this.setBackgroundColor(this.backgroundColor);
   }
 
   startDrawing(x: number, y: number) {
-    if (!this.context) return;
-    this.context.beginPath();
-    this.context.moveTo(x, y);
+    if (!this.drawingContext) return;
+    this.drawingContext.beginPath();
+    this.drawingContext.moveTo(x, y);
     this.isDrawing = true;
   }
 
   draw(x: number, y: number) {
-    if (!this.isDrawing || !this.context) return;
-    this.context.lineTo(x, y);
-    this.context.stroke();
+    if (!this.isDrawing || !this.drawingContext) return;
+
+    if (this.isErasing) {
+      this.drawingContext.globalCompositeOperation = 'destination-out';
+      this.drawingContext.lineWidth = 20;
+    } else {
+      this.drawingContext.globalCompositeOperation = 'source-over';
+      this.drawingContext.lineWidth = this.currentLineWidth;
+    }
+
+    this.drawingContext.globalAlpha = 0.5;
+    const grain = Math.random() * 0.2 + 0.75;
+    this.drawingContext.lineWidth *= grain;
+    this.drawingContext.lineTo(x, y);
+    this.drawingContext.stroke();
+    this.drawingContext.globalAlpha = 1;
+    this.drawingContext.lineWidth /= grain;
   }
 
   finishDrawing() {
-    if (!this.context) return;
-    this.context.closePath();
+    if (!this.drawingContext) return;
+    this.drawingContext.closePath();
     this.isDrawing = false;
   }
 
+  toggleEraser() {
+    this.isErasing = !this.isErasing;
+    if (this.drawingContext) {
+      this.drawingContext.strokeStyle = this.isErasing ? this.backgroundColor : this.brushColor;
+      this.drawingContext.globalCompositeOperation = this.isErasing ? 'destination-out' : 'source-over';
+    }
+  }
+
+  setColor(color: string) {
+    this.brushColor = color;
+    if (this.drawingContext) {
+      this.drawingContext.strokeStyle = color;
+    }
+  }
+
+  setBackgroundColor(color: string) {
+    if (!this.backgroundContext || !this.backgroundCanvas) return;
+    this.backgroundColor = color;
+    this.backgroundContext.fillStyle = color;
+    this.backgroundContext.fillRect(0, 0, this.backgroundCanvas.width, this.backgroundCanvas.height);
+  }
+
+  setLineWidth(width: number) {
+    this.currentLineWidth = width;
+    if (this.drawingContext) {
+      this.drawingContext.lineWidth = width;
+    }
+  }
+
   takeScreenshot() {
-    if (!this.canvas) return;
-    const dataUrl = this.canvas.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = dataUrl;
-    link.download = 'screenshot.png';
-    link.click();
+    if (!this.backgroundCanvas || !this.drawingCanvas || !this.drawingContext) return;
+
+    const tempCanvas = document.createElement('canvas');
+    tempCanvas.width = this.drawingCanvas.width;
+    tempCanvas.height = this.drawingCanvas.height;
+    const tempContext = tempCanvas.getContext('2d');
+
+    if (tempContext) {
+      tempContext.drawImage(this.backgroundCanvas, 0, 0);
+      tempContext.drawImage(this.drawingCanvas, 0, 0);
+
+      const dataUrl = tempCanvas.toDataURL('image/png');
+      const link = document.createElement('a');
+
+      link.href = dataUrl;
+      link.download = 'screenshot.png';
+      link.click();
+    }
   }
 
-  handleMouseDown(event: MouseEvent) {
-    const x = event.offsetX;
-    const y = event.offsetY;
-    this.startDrawing(x, y);
-  }
+  resetCanvas() {
+    if (this.drawingCanvas && this.drawingContext) {
+      this.drawingContext.clearRect(0, 0, this.drawingCanvas.width, this.drawingCanvas.height);
+    }
 
-  handleMouseMove(event: MouseEvent) {
-    const x = event.offsetX;
-    const y = event.offsetY;
-    this.draw(x, y);
-  }
-
-  handleTouchStart(event: TouchEvent) {
-    const touch = event.touches[0];
-    const x = touch.clientX - (this.canvas?.getBoundingClientRect().left ?? 0);
-    const y = touch.clientY - (this.canvas?.getBoundingClientRect().top ?? 0);
-    this.startDrawing(x, y);
-  }
-
-  handleTouchMove(event: TouchEvent) {
-    const touch = event.touches[0];
-    const x = touch.clientX - (this.canvas?.getBoundingClientRect().left ?? 0);
-    const y = touch.clientY - (this.canvas?.getBoundingClientRect().top ?? 0);
-    this.draw(x, y);
+    this.initCanvases();
   }
 }
 

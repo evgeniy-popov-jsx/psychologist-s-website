@@ -9,20 +9,27 @@ const Container = styled.div`
 `;
 
 const Button = styled.button`
+
+`;
+
+const Canvas = styled.canvas`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+`;
+
+const ToolBtn = styled.div`
   position: absolute;
   top: 10px;
   left: 10px;
   z-index: 1;
-`;
-
-const Canvas = styled.canvas`
-  display: block;
-  width: 100%;
-  height: 100%;
+  display: flex;
 `;
 
 export const Styled = {
   Container,
   Button,
   Canvas,
+  ToolBtn
 };

@@ -10,6 +10,7 @@ export default defineConfig({
       domain: "/src/domain",
       infrastructure: "/src/infrastructure",
       presentation: "/src/presentation",
+      utils: "/src/utils",
     }
   }
 })
