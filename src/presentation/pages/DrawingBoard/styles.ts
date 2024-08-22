@@ -8,10 +8,6 @@ const Container = styled.div`
   margin: 0;
 `;
 
-const Button = styled.button`
-
-`;
-
 const Canvas = styled.canvas`
   position: absolute;
   display: block;
@@ -19,17 +15,7 @@ const Canvas = styled.canvas`
   height: 100%;
 `;
 
-const ToolBtn = styled.div`
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1;
-  display: flex;
-`;
-
 export const Styled = {
   Container,
-  Button,
   Canvas,
-  ToolBtn
 };
