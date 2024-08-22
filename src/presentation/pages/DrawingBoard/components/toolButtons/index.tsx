@@ -1,30 +1,22 @@
 import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { ColorPicker, InputNumber } from 'antd';
 import { drawingStore } from 'application/stores/drawingStore';
 import { Color, convertColorToString } from 'utils/convertColor';
 import { Styled } from './styles';
+import { Tooltip } from 'antd';
 
 export const ToolButtons: React.FC = observer(() => {
-  const [inputValue, setInputValue] = useState(1);
-  const [color, setColor] = useState<Color>('#fffff');
-  const [colorBg, setColorBg] = useState<Color>('#af3434');
+  const [color, setColor] = useState<string>('#fffff');
+  const [colorBg, setColorBg] = useState<string>('#af3434');
 
   const handleColorChangeBrush = (newColor: Color) => {
-    setColor(newColor);
+    setColor(convertColorToString(newColor));
     drawingStore.setBrushColor(convertColorToString(newColor));
   };
 
   const handleColorChangeBg = (newColor: Color) => {
-    setColorBg(newColor);
+    setColorBg(convertColorToString(newColor));
     drawingStore.setBackgroundColor(convertColorToString(newColor));
-  };
-
-  const handleLineWidth = (value: number | null) => {
-    if (value !== null) {
-      setInputValue(value);
-      drawingStore.setLineWidth(value);
-    }
   };
 
   const handleToggleEraser = () => {
@@ -40,24 +32,28 @@ export const ToolButtons: React.FC = observer(() => {
   };
 
   return (
-    <Styled.ToolBtn>
-      <ColorPicker value={color} onChange={handleColorChangeBrush} disabledAlpha />
-      <ColorPicker value={colorBg} onChange={handleColorChangeBg} disabledAlpha />
-      <Styled.Button onClick={handleToggleEraser}>
-        {drawingStore.isErasing ? 'Рисовать' : 'Ластик'}
-      </Styled.Button>
-      <Styled.Button onClick={handleTakeScreenshot}>Сделать скриншот</Styled.Button>
-      <Styled.Button onClick={handleResetCanvas}>Очистить</Styled.Button>
-      <InputNumber
-        min={1}
-        max={18}
-        defaultValue={1}
-        onChange={handleLineWidth}
-        value={inputValue}
-        step={1}
-        controls={false}
-        width={20}
-      />
-    </Styled.ToolBtn>
+    <Styled.ToolBtns>
+      <Styled.ColorPicker value={color} onChange={handleColorChangeBrush} disabledAlpha>
+        <Tooltip placement="bottom" title={'Цвет кисти'}>
+          <Styled.BtnColorPicker $color={color} />
+        </Tooltip>
+      </Styled.ColorPicker>
+      <Styled.ColorPicker value={colorBg} onChange={handleColorChangeBg} disabledAlpha>
+        <Tooltip placement="bottom" title={'Цвет фона'}>
+          <Styled.BtnColorPicker $color={colorBg} />
+        </Tooltip>
+      </Styled.ColorPicker>
+      <Tooltip placement="bottom" title={drawingStore.isErasing ? 'Рисовать' : 'Ластик'}>
+        <Styled.Button onClick={handleToggleEraser}>
+          {drawingStore.isErasing ? '' : ''}
+        </Styled.Button>
+      </Tooltip>
+      <Tooltip placement="bottom" title='Сохранить'>
+        <Styled.Button onClick={handleTakeScreenshot}></Styled.Button>
+      </Tooltip>
+      <Tooltip placement="bottom" title='Очистить'>
+        <Styled.Button onClick={handleResetCanvas}></Styled.Button>
+      </Tooltip>
+    </Styled.ToolBtns>
   );
 });

@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { drawingStore } from 'application/stores/drawingStore';
 import { Styled } from './styles';
 import { ToolButtons } from './components/toolButtons';
+import { ToolSizeButtons } from './components/toolSizeButtons';
 
 export const DrawingBoard: React.FC = observer(() => {
   const drawingCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -55,6 +56,7 @@ export const DrawingBoard: React.FC = observer(() => {
         style={{ zIndex: 1 }}
       />
       <ToolButtons />
+      <ToolSizeButtons />
     </Styled.Container>
   );
 });
