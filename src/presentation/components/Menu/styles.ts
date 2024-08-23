@@ -3,9 +3,9 @@ import Export from 'presentation/pages/DrawingBoard/icons/export.svg?react';
 import { Link as RLink} from 'react-router-dom';
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 13px;
-  left: 50%;
+  left: 50vw;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
