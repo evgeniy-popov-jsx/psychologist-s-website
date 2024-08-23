@@ -4,12 +4,12 @@ import { Styled } from './styles';
 import { useEffect, useRef } from 'react';
 
 export const ToolSizeButtons: React.FC = observer(() => {
-  const lineWidth = [1, 4, 7, 11, 14];
   const hoverSoundRef = useRef<HTMLAudioElement | null>(null);
+  const lineWidth = [1, 4, 7, 11, 14];
 
   useEffect(() => {
     if (hoverSoundRef.current) {
-      hoverSoundRef.current.volume = 0.1;
+      hoverSoundRef.current.volume = 0.03;
     }
   }, []);
 

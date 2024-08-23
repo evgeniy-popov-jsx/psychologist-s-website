@@ -45,14 +45,18 @@ export const ToolButtons: React.FC = observer(() => {
       </Styled.ColorPicker>
       <Tooltip placement="bottom" title={drawingStore.isErasing ? 'Рисовать' : 'Ластик'}>
         <Styled.Button onClick={handleToggleEraser}>
-          {drawingStore.isErasing ? '' : ''}
+          {drawingStore.isErasing ? <Styled.BrushIcon /> : <Styled.EraserIcon /> }
         </Styled.Button>
       </Tooltip>
       <Tooltip placement="bottom" title='Сохранить'>
-        <Styled.Button onClick={handleTakeScreenshot}></Styled.Button>
+        <Styled.Button onClick={handleTakeScreenshot}>
+          <Styled.ExportIcon />
+        </Styled.Button>
       </Tooltip>
       <Tooltip placement="bottom" title='Очистить'>
-        <Styled.Button onClick={handleResetCanvas}></Styled.Button>
+        <Styled.Button onClick={handleResetCanvas}>
+          <Styled.EraserIcon />
+        </Styled.Button>
       </Tooltip>
     </Styled.ToolBtns>
   );
