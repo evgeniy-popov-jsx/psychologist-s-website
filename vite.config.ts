@@ -19,6 +19,7 @@ export default defineConfig({
       infrastructure: "/src/infrastructure",
       presentation: "/src/presentation",
       utils: "/src/utils",
+      assets: "/src/assets",
     }
   }
 })
