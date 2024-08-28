@@ -13,6 +13,14 @@ const LineAnim = keyframes`
       background: transparent;
   }
 `;
+const Opacity = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const LineAnim2 = keyframes`
   0% {
@@ -31,12 +39,18 @@ const Link = styled(RLink)`
   position: relative;
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 27px;
   padding: 12px;
   gap: 12px;
   text-decoration: none;
   color: black;
   font-size: 14px;
+  animation: ease 0.5s 1 normal forwards ${Opacity};
+
+  &:hover {
+    background-color: grey;
+    border-radius: 12.5px;
+  }
 `;
 
 const Span = styled.span<{ $type: 'education' | 'desc' | 'year'}>`

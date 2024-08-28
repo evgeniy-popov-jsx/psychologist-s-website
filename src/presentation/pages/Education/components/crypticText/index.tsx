@@ -6,7 +6,7 @@ export const CrypticTextAnimation = ({ fullText }: { fullText: string }) => {
 
   useEffect(() => {
     const randomChar = () => {
-      const chars = 'абвгдежзиклмноп?#рстуф%хць&юя012589!>';
+      const chars = 'abcdifjhigklmnopqrstuvwxz012589!>';
       return chars[Math.floor(Math.random() * chars.length)];
     };
 
@@ -15,8 +15,7 @@ export const CrypticTextAnimation = ({ fullText }: { fullText: string }) => {
         let nextText = '';
         let nextAttempts = [...attempts];
 
-        // Увеличиваем длину текста на 3 символа
-        const nextLength = Math.min(prevText.length + 1, fullText.length);
+        const nextLength = Math.min(prevText.length + 2, fullText.length);
 
         for (let i = 0; i < nextLength; i++) {
           const currentChar = prevText[i]?.toLowerCase();
@@ -25,7 +24,7 @@ export const CrypticTextAnimation = ({ fullText }: { fullText: string }) => {
           if (i < prevText.length && currentChar === targetChar) {
             nextText += fullText[i];
           } else {
-            if (nextAttempts[i] >= 2) {
+            if (nextAttempts[i] >= 9) {
               nextText += fullText[i];
             } else {
               nextText += randomChar();

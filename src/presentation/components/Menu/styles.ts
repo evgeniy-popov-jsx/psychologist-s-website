@@ -1,6 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Export from 'presentation/pages/DrawingBoard/icons/export.svg?react';
 import { Link as RLink} from 'react-router-dom';
+
+const Open = keyframes`
+  0% {
+    transform: translate(-50%, 150%);
+  }
+  100% {
+    transform: translate(-50%, 0%);
+  }
+`;
 
 const Container = styled.div`
   position: fixed;
@@ -13,7 +22,7 @@ const Container = styled.div`
   padding: 9.5px;
   border-radius: 12.5px;
   z-index: 3;
-
+  animation: ease 0.8s forwards ${Open};
   -webkit-box-shadow: 6px 5px 9px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 6px 5px 9px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 6px 5px 9px 0px rgba(0, 0, 0, 0.5);

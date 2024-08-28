@@ -1,57 +1,57 @@
-import { useState, useEffect, MouseEvent as ReactMouseEvent } from 'react';
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+// import { useState, useEffect, MouseEvent as ReactMouseEvent } from 'react';
+// import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Styled } from './styles.ts';
 import { CrypticTextAnimation } from '../crypticText/index.tsx';
 
 export const Link = () => {
-  const [showPhoto, setShowPhoto] = useState(false);
+//   const [showPhoto, setShowPhoto] = useState(false);
 
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+//   const x = useMotionValue(0);
+//   const y = useMotionValue(0);
 
-  const photoX = useTransform(x, value => value);
-  const photoY = useTransform(y, value => value);
+//   const photoX = useTransform(x, value => value);
+//   const photoY = useTransform(y, value => value);
 
-  const springConfig = { stiffness: 300, damping: 30 };
-  const xSpring = useSpring(photoX, springConfig);
-  const ySpring = useSpring(photoY, springConfig);
+//   const springConfig = { stiffness: 300, damping: 30 };
+//   const xSpring = useSpring(photoX, springConfig);
+//   const ySpring = useSpring(photoY, springConfig);
 
-  const handleMouseEnter = (event: ReactMouseEvent<HTMLAnchorElement>) => {
-    setShowPhoto(true);
-    const { clientX, clientY } = event;
-    x.set(clientX);
-    y.set(clientY);
-  };
+//   const handleMouseEnter = (event: ReactMouseEvent<HTMLAnchorElement>) => {
+//     setShowPhoto(true);
+//     const { clientX, clientY } = event;
+//     x.set(clientX);
+//     y.set(clientY);
+//   };
 
-  const handleMouseLeave = () => {
-    setShowPhoto(false);
-  };
+//   const handleMouseLeave = () => {
+//     setShowPhoto(false);
+//   };
 
-  const handleMouseMove = (event: ReactMouseEvent<HTMLAnchorElement>) => {
-    const { clientX, clientY } = event;
-    x.set(clientX);
-    y.set(clientY);
-  };
+//   const handleMouseMove = (event: ReactMouseEvent<HTMLAnchorElement>) => {
+//     const { clientX, clientY } = event;
+//     x.set(clientX);
+//     y.set(clientY);
+//   };
 
- useEffect(() => {
-    const updatePosition = (event: MouseEvent) => {
-      x.set(event.clientX + 70);
-      y.set(event.clientY - 70);
-    };
+//  useEffect(() => {
+//     const updatePosition = (event: MouseEvent) => {
+//       x.set(event.clientX + 90);
+//       y.set(event.clientY - 90);
+//     };
     
-    document.addEventListener('mousemove', updatePosition);
+//     document.addEventListener('mousemove', updatePosition);
     
-    return () => document.removeEventListener('mousemove', updatePosition);
-  }, [x, y]);
+//     return () => document.removeEventListener('mousemove', updatePosition);
+//   }, [x, y]);
   
   return (
     <Styled.Link 
       to={''} 
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onMouseMove={handleMouseMove}
+      // onMouseEnter={handleMouseEnter}
+      // onMouseLeave={handleMouseLeave}
+      // onMouseMove={handleMouseMove}
     >
-      {showPhoto && (
+      {/* {showPhoto && (
         <motion.div
           style={{
             position: 'fixed',
@@ -72,7 +72,7 @@ export const Link = () => {
         >
           <Styled.PhotoBlock src={'src/assets/photo.webp'}/>
         </motion.div>
-      )}
+      )} */}
       <Styled.Span $type={'education'}><CrypticTextAnimation fullText='Образование'/></Styled.Span>
       <Styled.Span $type={'desc'}><CrypticTextAnimation fullText='Краткое описание образования'/></Styled.Span>
       <Styled.Line></Styled.Line>
