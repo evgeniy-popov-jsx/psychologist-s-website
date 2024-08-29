@@ -7,8 +7,8 @@ class DrawingStore {
   drawingContext: CanvasRenderingContext2D | null = null;
   isDrawing: boolean = false;
   isErasing: boolean = false;
-  brushColor: string = '#ffffff';
-  backgroundColor: string = '#af3434';
+  brushColor: string = '#FFEDEB';
+  backgroundColor: string = '#4E5A82';
   currentLineWidth: number = 1;
 
   constructor() {

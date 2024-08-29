@@ -1,6 +1,9 @@
 
 :root {
   --vh: 1vh;
+  --bg-color: #4E5A82;
+  --text-color: #FFEDEB;
+  --accent-color: #ADBFFD;
 }
 html,
 body {
@@ -8,5 +11,21 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #af3434;
+  background: var(--bg-color);
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) transparent;
+}
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #b86565;
+  border-radius: 10px;
+  border: 2px solid transparent;
 }

@@ -6,19 +6,11 @@ const LineAnim = keyframes`
     background: transparent;
   }
   50% {
-    background: hsl(0 0% 49.4%);
+    background: var(--text-color);
 } 
   100% {
       width: 100%;
       background: transparent;
-  }
-`;
-const Opacity = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 `;
 
@@ -31,7 +23,7 @@ const LineAnim2 = keyframes`
 } 
   100% {
       width: 100%;
-      background: hsl(0 0% 17.9%);
+      background: var(--accent-color);
   }
 `;
 
@@ -43,12 +35,12 @@ const Link = styled(RLink)`
   padding: 12px;
   gap: 12px;
   text-decoration: none;
-  color: black;
+  color: var(--text-color);
   font-size: 14px;
-  animation: ease 0.5s 1 normal forwards ${Opacity};
 
   &:hover {
-    background-color: grey;
+    outline: 1px solid var(--accent-color);
+    outline-offset: -1px;
     border-radius: 12.5px;
   }
 `;
@@ -60,16 +52,16 @@ const Span = styled.span<{ $type: 'education' | 'desc' | 'year'}>`
     switch ($type) {
       case 'education':
         return `
-          font-weight: 700;
-          color: #1a73e8;
+          font-weight: 600;
+          color: var(--text-color);
         `;
       case 'desc':
         return `
-          color: #777;
+          color: var(--accent-color);
         `;
       case 'year':
         return `
-          color: #999;
+          color: var(--text-color);
         `;
       default:
         return '';
@@ -87,7 +79,7 @@ const Line = styled.div`
     bottom: -1px;
     height: 1px;
     width: 0px;
-    animation: 1s ease 0.2s 1 normal forwards running ${LineAnim};
+    animation: 1s ease 0.2s  normal forwards running ${LineAnim};
     z-index: 3
   }
   &::after {
@@ -96,7 +88,7 @@ const Line = styled.div`
     bottom: -1px;
     height: 1px;
     width: 0px;
-    animation: 1s ease 0s 1 normal forwards running ${LineAnim2};
+    animation: 1s ease 0s normal forwards running ${LineAnim2};
   }
 `;
 

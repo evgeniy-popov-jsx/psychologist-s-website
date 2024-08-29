@@ -33,13 +33,13 @@ const pulse = keyframes`
 
 const borderAnim = keyframes`
   0%{
-    border: 1px solid white;
+    border: 1px solid var(--text-color);
   }
   50%{
     border: none;
   }
   100%{
-    border: 1px solid white;
+    border: 1px solid var(--text-color);
   }
 `;
 
@@ -63,7 +63,7 @@ const Circle = styled.div<{ $size: number, $active: boolean }>`
   width: ${props => props.$size}px;
   height: ${props => (props.$active ? '100%' : `${props.$size}px`)};
   border-radius: ${props => (props.$active ? '20%' : '50%')};
-  background-color: white;
+  background-color: var(--text-color);
 `;
 
 const Button = styled.button`
@@ -71,7 +71,7 @@ const Button = styled.button`
   width: 22px;
   height: 22px;
   background: none;
-  border: 1px solid white;
+  border: 1px solid var(--text-color);
   border-radius: 50%;
   cursor: pointer;
 

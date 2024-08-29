@@ -6,8 +6,8 @@ import { Styled } from './styles';
 import { Tooltip } from 'antd';
 
 export const ToolButtons: React.FC = observer(() => {
-  const [color, setColor] = useState<string>('#fffff');
-  const [colorBg, setColorBg] = useState<string>('#af3434');
+  const [color, setColor] = useState<string>('#FFEDEB');
+  const [colorBg, setColorBg] = useState<string>('#4E5A82');
 
   const handleColorChangeBrush = (newColor: Color) => {
     setColor(convertColorToString(newColor));

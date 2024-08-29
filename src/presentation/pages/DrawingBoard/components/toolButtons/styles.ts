@@ -17,7 +17,7 @@ const ToolBtns = styled.div`
 const EraserIcon = styled(Eraser)`
   width: 32px;
   height: 32px;
-  fill: white;
+  fill: var(--text-color);
   cursor: pointer;
 
   &:hover {
@@ -28,7 +28,7 @@ const EraserIcon = styled(Eraser)`
 const BrushIcon = styled(Brush)`
   width: 32px;
   height: 32px;
-  fill: white;
+  fill: var(--text-color);
   cursor: pointer;
 
   &:hover {
@@ -39,7 +39,7 @@ const BrushIcon = styled(Brush)`
 const ExportIcon = styled(Export)`
   width: 32px;
   height: 32px;
-  fill: white;
+  fill: var(--text-color);
   cursor: pointer;
 
   &:hover {
@@ -65,7 +65,7 @@ const BtnColorPicker = styled.button.attrs<{ $color: string }>(props => ({
   width: 32px;
   height: 32px;
   border-radius: 6.5px;
-  border: 1px solid #ededed;
+  border: 1px solid var(--text-color);
   cursor: pointer;
 `;
 
