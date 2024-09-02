@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { drawingStore } from 'application/stores/drawingStore';
 import { Color, convertColorToString } from 'utils/convertColor';
 import { Styled } from './styles';
-import { Tooltip } from 'presentation/components/Tooltip';
+import { Tooltip } from 'antd';
 
 export const ToolButtons: React.FC = observer(() => {
   const [color, setColor] = useState<string>('#FFEDEB');
@@ -31,29 +31,64 @@ export const ToolButtons: React.FC = observer(() => {
     drawingStore.resetCanvas();
   };
 
+  const styles = {
+    color: '#4E5A82 ',
+    bgColor: '#FFEDEB',
+  };
+
   return (
     <Styled.ToolBtns>
       <Styled.ColorPicker value={color} onChange={handleColorChangeBrush} disabledAlpha>
-        <Tooltip title={'Цвет кисти'}>
+        <Tooltip
+          title={'Цвет кисти'}
+          placement="bottom"
+          color={styles.bgColor}
+          overlayInnerStyle={{color: styles.color}}
+          // destroyTooltipOnHide
+        >
           <Styled.BtnColorPicker $color={color} />
         </Tooltip>
       </Styled.ColorPicker>
       <Styled.ColorPicker value={colorBg} onChange={handleColorChangeBg} disabledAlpha>
-        <Tooltip title={'Цвет фона'}>
+        <Tooltip
+          title={'Цвет фона'}
+          placement="bottom"
+          color={styles.bgColor}
+          overlayInnerStyle={{color: styles.color}}
+          destroyTooltipOnHide
+        >
           <Styled.BtnColorPicker $color={colorBg} />
         </Tooltip>
       </Styled.ColorPicker>
-      <Tooltip title={drawingStore.isErasing ? 'Рисовать' : 'Ластик'}>
+      <Tooltip
+          title={drawingStore.isErasing ? 'Рисовать' : 'Ластик'}
+          placement="bottom"
+          color={styles.bgColor}
+          overlayInnerStyle={{color: styles.color}}
+          destroyTooltipOnHide
+        >
         <Styled.Button onClick={handleToggleEraser}>
           {drawingStore.isErasing ? <Styled.BrushIcon /> : <Styled.EraserIcon /> }
         </Styled.Button>
       </Tooltip>
-      <Tooltip title='Сохранить'>
+        <Tooltip
+          title={'Сохранить'}
+          placement="bottom"
+          color={styles.bgColor}
+          overlayInnerStyle={{color: styles.color}}
+          destroyTooltipOnHide
+        >
         <Styled.Button onClick={handleTakeScreenshot}>
           <Styled.ExportIcon />
         </Styled.Button>
       </Tooltip>
-      <Tooltip title='Очистить'>
+        <Tooltip
+          title={'Очистить'}
+          placement="bottom"
+          color={styles.bgColor}
+          overlayInnerStyle={{color: styles.color}}
+          destroyTooltipOnHide
+        >
         <Styled.Button onClick={handleResetCanvas}>
           X
         </Styled.Button>

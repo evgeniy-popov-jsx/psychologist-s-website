@@ -9,7 +9,7 @@ export const Educations = () => {
   useEffect(() => {
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13,14,15,16,17]; 
     
-    const timeoutIDs = data.map((_, index) => {
+    const timeoutIDs = data.map((el, index) => {
       return setTimeout(() => {
         setLinks(prevLinks => [
           ...prevLinks, 
@@ -18,7 +18,7 @@ export const Educations = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <Link key={index}></Link>
+              <Link key={el}></Link>
           </motion.div>
         ]);
       }, 100 * index);

@@ -4,6 +4,7 @@ import { drawingStore } from 'application/stores/drawingStore';
 import { Styled } from './styles';
 import { ToolButtons } from './components/toolButtons';
 import { ToolSizeButtons } from './components/toolSizeButtons';
+import { Message } from 'presentation/components/Message';
 
 export const DrawingBoard: React.FC = observer(() => {
   const drawingCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -57,6 +58,7 @@ export const DrawingBoard: React.FC = observer(() => {
       />
       <ToolButtons />
       <ToolSizeButtons />
+      <Message />
     </Styled.Container>
   );
 });
