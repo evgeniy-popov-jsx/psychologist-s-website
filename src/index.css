@@ -5,6 +5,25 @@
   --text-color: #FFEDEB;
   --accent-color: #ADBFFD;
 }
+
+@font-face {
+  font-family: 'Stem';
+  src: url('assets/fonts/Stem-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Stem';
+  src: url('assets/fonts/Stem-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Stem';
+  src: url('assets/fonts/Stem-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
 html,
 body {
   height: 100%;
@@ -15,6 +34,8 @@ body {
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: var(--accent-color) transparent;
+  font-family: 'Stem';
+  font-weight: 500;
 }
 body::-webkit-scrollbar {
   width: 8px;

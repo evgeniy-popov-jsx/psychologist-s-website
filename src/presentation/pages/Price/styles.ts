@@ -8,13 +8,12 @@ const Container = styled.div`
 
 const Card = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  text-align: center;
+  gap: 20px;
   height: 100%;
   width: 100%;
   border-radius: 5px;
+  padding: 10px 10px;
   color: var(--text-color);
   border: 1px solid var(--accent-color);
   cursor: pointer;
@@ -62,11 +61,44 @@ const Cards = styled.div`
 
 `;
 
+const Title = styled.h1`
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 26px;
+`;
+
+const SubTitle = styled.h2`
+  font-weight: normal;
+  font-size: 16px;
+  margin: 0;
+`;
+
+const Description = styled.div`
+  font-size: 14px;
+  color: var(--accent-color)
+`;
+
+const Price = styled.div`
+  font-size: 64px;
+  text-align: end;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 240px;
+`;
+
 export const Styled = {
   Container,
   Cards,
   Card,
   CardFirst,
   CardSecond,
-  CardThird
+  CardThird,
+  Title,
+  SubTitle,
+  Description,
+  Price,
+  Image,
 };
