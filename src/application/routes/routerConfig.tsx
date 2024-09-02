@@ -1,7 +1,7 @@
 import { useRoutes } from 'react-router-dom';
 import { ROUTES } from './routes';
 import { DrawingBoard } from 'presentation/pages/DrawingBoard';
-import { About } from 'presentation/pages/About';
+import { Photos } from 'presentation/pages/Photos';
 import { Educations } from 'presentation/pages/Education';
 import { Price } from 'presentation/pages/Price';
 
@@ -13,7 +13,7 @@ export const RouterConfig = () => {
 		},
 		{
 			path: ROUTES.photos,
-			element: <About />,
+			element: <Photos />,
 		},
 		{
 			path: ROUTES.educations,

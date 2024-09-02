@@ -1,7 +1,7 @@
 import { Image } from './components/Image/index.tsx';
 import { Styled } from './styles.ts';
 
-export const About = () => {
+export const Photos = () => {
 
   const createImg = () => {
     const images = [];

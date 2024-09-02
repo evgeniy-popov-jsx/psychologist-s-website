@@ -55,7 +55,7 @@ export const ToolButtons: React.FC = observer(() => {
       </Tooltip>
       <Tooltip title='Очистить'>
         <Styled.Button onClick={handleResetCanvas}>
-          <Styled.EraserIcon />
+          X
         </Styled.Button>
       </Tooltip>
     </Styled.ToolBtns>

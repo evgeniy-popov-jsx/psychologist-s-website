@@ -21,18 +21,18 @@ const EraserIcon = styled(Eraser)`
   cursor: pointer;
 
   &:hover {
-    fill: red;
+    fill: var(--accent-color);
   }
 `;
 
 const BrushIcon = styled(Brush)`
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 29px;
   fill: var(--text-color);
   cursor: pointer;
 
-  &:hover {
-    fill: red;
+  &:hover path {
+    fill: var(--accent-color);
   }
 `;
 
@@ -43,15 +43,18 @@ const ExportIcon = styled(Export)`
   cursor: pointer;
 
   &:hover {
-    fill: red;
+    fill: var(--accent-color);
   }
 `;
 
 const Button = styled.button`
   width: 32px;
   height: 32px;
+  font-size: 24px;
+  color: var(--text-color);
   border: none;
   background: none;
+  cursor: pointer;
 `;
 
 const ColorPicker = styled(ANTColorPicker)`
