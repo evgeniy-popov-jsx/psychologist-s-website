@@ -1,5 +1,9 @@
 import styled, { keyframes } from 'styled-components';
-import Export from 'presentation/pages/DrawingBoard/icons/export.svg?react';
+import Paint from 'presentation/components/Menu/icons/paint.svg?react';
+import Photos from 'presentation/components/Menu/icons/photos.svg?react';
+import Education from 'presentation/components/Menu/icons/education.svg?react';
+import Price from 'presentation/components/Menu/icons/price.svg?react';
+import Telegram from 'presentation/components/Menu/icons/telegram.svg?react';
 import { Link as RLink} from 'react-router-dom';
 
 const Open = keyframes`
@@ -17,25 +21,88 @@ const Container = styled.div`
   left: 50vw;
   transform: translateX(-50%);
   display: flex;
+  gap: 18px;
   align-items: center;
-  background: white;
+  background: var(--bg-color);
   padding: 9.5px;
+  border: 1px solid var(--accent-color);
   border-radius: 12.5px;
   z-index: 3;
   animation: ease 0.8s forwards ${Open};
-  -webkit-box-shadow: 6px 5px 9px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 6px 5px 9px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 6px 5px 9px 0px rgba(0, 0, 0, 0.5);
 `;
 
-const ExportIcon = styled(Export)`
-  width: 32px;
-  height: 32px;
-  fill: grey;
-  cursor: pointer;
+const PaintIcon = styled(Paint)<{ $active: boolean }>`
+  width: 27.67px;
+  height: 25.64px;
   padding: 2px;
-  &:hover {
-    fill: red;
+  cursor: pointer;
+
+  path {
+    fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
+  }
+
+  &:hover path {
+    fill: var(--text-color);
+  }
+`;
+
+const PhotosIcon = styled(Photos)<{ $active: boolean }>`
+  width: 32.35px;
+  height: 25.26px;
+  padding: 2px;
+  cursor: pointer;
+
+  path {
+    fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
+  }
+
+  &:hover path {
+    fill: var(--text-color);
+  }
+`;
+
+const EducationIcon = styled(Education)<{ $active: boolean }>`
+  width: 23.04px;
+  height: 25.44px;
+  padding: 2px;
+  cursor: pointer;
+
+  path {
+    fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
+  }
+
+  &:hover path {
+    fill: var(--text-color);
+  }
+`;
+
+const PriceIcon = styled(Price)<{ $active: boolean }>`
+  width: 27.96px;
+  height: 26.51px;
+  padding: 2px;
+  cursor: pointer;
+
+  path {
+    fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
+  }
+
+  &:hover path {
+    fill: var(--text-color);
+  }
+`;
+
+const TelegramIcon = styled(Telegram)<{ $active: boolean }>`
+  width: 28.93px;
+  height: 25.97px;
+  padding: 2px;
+  cursor: pointer;
+
+  path {
+    fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
+  }
+
+  &:hover path {
+    fill: var(--text-color);
   }
 `;
 
@@ -49,6 +116,10 @@ const Link = styled(RLink)`
 
 export const Styled = {
   Container,
-  ExportIcon,
+  PaintIcon,
+  PhotosIcon,
+  EducationIcon,
+  PriceIcon,
+  TelegramIcon,
   Link
 };

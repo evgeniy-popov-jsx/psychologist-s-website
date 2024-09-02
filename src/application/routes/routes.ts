@@ -1,6 +1,6 @@
 export const ROUTES = {
   main: '/',
-  about: '/about',
+  photos: '/photos',
   educations: '/educations',
   price: '/price',
 };

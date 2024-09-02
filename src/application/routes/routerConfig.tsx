@@ -12,7 +12,7 @@ export const RouterConfig = () => {
 			element: <DrawingBoard />,
 		},
 		{
-			path: ROUTES.about,
+			path: ROUTES.photos,
 			element: <About />,
 		},
 		{
