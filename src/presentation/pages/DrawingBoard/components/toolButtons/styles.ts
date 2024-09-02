@@ -76,5 +76,5 @@ export const Styled = {
   Button,
   EraserIcon,
   ExportIcon,
-  BrushIcon
+  BrushIcon,
 };

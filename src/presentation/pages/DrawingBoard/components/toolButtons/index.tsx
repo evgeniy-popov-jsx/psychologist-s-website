@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { drawingStore } from 'application/stores/drawingStore';
 import { Color, convertColorToString } from 'utils/convertColor';
 import { Styled } from './styles';
-import { Tooltip } from 'antd';
+import { Tooltip } from 'presentation/components/Tooltip';
 
 export const ToolButtons: React.FC = observer(() => {
   const [color, setColor] = useState<string>('#FFEDEB');
@@ -34,26 +34,26 @@ export const ToolButtons: React.FC = observer(() => {
   return (
     <Styled.ToolBtns>
       <Styled.ColorPicker value={color} onChange={handleColorChangeBrush} disabledAlpha>
-        <Tooltip placement="bottom" title={'Цвет кисти'}>
+        <Tooltip title={'Цвет кисти'}>
           <Styled.BtnColorPicker $color={color} />
         </Tooltip>
       </Styled.ColorPicker>
       <Styled.ColorPicker value={colorBg} onChange={handleColorChangeBg} disabledAlpha>
-        <Tooltip placement="bottom" title={'Цвет фона'}>
+        <Tooltip title={'Цвет фона'}>
           <Styled.BtnColorPicker $color={colorBg} />
         </Tooltip>
       </Styled.ColorPicker>
-      <Tooltip placement="bottom" title={drawingStore.isErasing ? 'Рисовать' : 'Ластик'}>
+      <Tooltip title={drawingStore.isErasing ? 'Рисовать' : 'Ластик'}>
         <Styled.Button onClick={handleToggleEraser}>
           {drawingStore.isErasing ? <Styled.BrushIcon /> : <Styled.EraserIcon /> }
         </Styled.Button>
       </Tooltip>
-      <Tooltip placement="bottom" title='Сохранить'>
+      <Tooltip title='Сохранить'>
         <Styled.Button onClick={handleTakeScreenshot}>
           <Styled.ExportIcon />
         </Styled.Button>
       </Tooltip>
-      <Tooltip placement="bottom" title='Очистить'>
+      <Tooltip title='Очистить'>
         <Styled.Button onClick={handleResetCanvas}>
           <Styled.EraserIcon />
         </Styled.Button>
