@@ -3,25 +3,61 @@ import { Image } from './components/Image/index.tsx';
 import { Styled } from './styles.ts';
 
 export const Photos = () => {
-
-  const createImg = () => {
-    const images = [];
-    for (let i = 0; i < 16; i++) {
-      images.push(
-        <Image 
-          key={i} 
-          src='src/assets/photo.webp' 
-          blurredSrc='src/assets/photoBlur.webp'
-        />
-      );
+  const images = [
+    {
+      id: 1,
+      url: 'src/assets/1.jpg',
+    },
+    {
+      id: 2,
+      url: 'src/assets/2.jpg',
+    },
+    {
+      id: 3,
+      url: 'src/assets/3.jpg',
+    },
+    {
+      id: 4,
+      url: 'src/assets/4.jpg',
+    },
+    {
+      id: 5,
+      url: 'src/assets/5.jpg',
+    },
+    {
+      id: 6,
+      url: 'src/assets/1.jpg',
+    },
+    {
+      id: 7,
+      url: 'src/assets/2.jpg',
+    },
+    {
+      id: 8,
+      url: 'src/assets/3.jpg',
+    },
+    {
+      id: 9,
+      url: 'src/assets/4.jpg',
+    },
+    {
+      id: 10,
+      url: 'src/assets/5.jpg',
     }
-    return images;
-  };
-
+  ];
+  
   return (
     <Styled.Container>
       <Styled.Ul>
-        {createImg()}
+        {images.map((el)=>{
+          return (
+            <Image 
+              key={el.id} 
+              src={el.url} 
+              blurredSrc={el.url} 
+            />
+          );
+        })}
       </Styled.Ul>
       <Message>
         Жизнь порой подкидывает нас на волнах, и каждый день 
