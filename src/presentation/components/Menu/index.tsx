@@ -63,7 +63,7 @@ export const Menu = () => {
         overlayInnerStyle={{color: styles.color}}
         destroyTooltipOnHide
       >
-        <Styled.Link to={'/telegram'}>
+        <Styled.Link to={'https://t.me/Greirinka'} target="_blank" rel="noopener noreferrer">
           <Styled.TelegramIcon $active={location.pathname === '/telegram'} />
         </Styled.Link>
       </Tooltip>

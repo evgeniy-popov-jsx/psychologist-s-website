@@ -1,4 +1,5 @@
-  import styled from 'styled-components';
+  import { Message } from 'presentation/components/Message';
+import styled from 'styled-components';
 
   const CardsContainer = styled.div`
     display: flex;
@@ -137,5 +138,13 @@
           </PriceContainer>
         </Card3>
       </CardsFlexBox>
+      <Message>
+        Я понимаю, что выбор психолога — это важное решение. Поэтому хочу, чтобы у вас была 
+        полная информация о моих услугах и ценах. В зависимости от типа консультации и длительности, 
+        стоимость может варьироваться. Я предлагаю гибкий подход и стремлюсь сделать свои услуги 
+        доступными для всех. Если у вас возникли вопросы или вам нужна помощь в выборе, 
+        не стесняйтесь обращаться ко мне. Я здесь, чтобы помочь вам на пути к лучшему
+        пониманию себя! Присоединяйся к телеграм!
+      </Message>
     </CardsContainer>
   );
