@@ -9,19 +9,29 @@
 @font-face {
   font-family: 'Stem';
   src: url('assets/fonts/Stem-Regular.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stem';
+  src: url('assets/fonts/Stem-SemiLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'Stem';
   src: url('assets/fonts/Stem-Bold.ttf') format('truetype');
   font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'Stem';
   src: url('assets/fonts/Stem-Medium.ttf') format('truetype');
   font-weight: 500;
+  font-style: normal;
 }
 
 html,
@@ -35,7 +45,8 @@ body {
   scrollbar-width: thin;
   scrollbar-color: var(--accent-color) transparent;
   font-family: 'Stem';
-  font-weight: 500;
+  font-weight: 300;
+  font-style: normal;
 }
 body::-webkit-scrollbar {
   width: 8px;

@@ -7,7 +7,7 @@ export const Message: React.FC<{ children: string }> = ({ children }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 1000);
+    }, 1300);
 
     return () => clearTimeout(timer);
   }, []);

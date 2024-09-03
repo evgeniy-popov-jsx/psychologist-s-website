@@ -1,50 +1,141 @@
-import { Message } from 'presentation/components/Message/index.tsx';
-import { Styled } from './styles.ts';
+  import styled from 'styled-components';
 
-export const Price = () => {
-  return (
-    <Styled.Container>
-      <Styled.Cards>
-        <Styled.CardFirst>
-          <Styled.Title>Пакет "Стабильность"</Styled.Title>
-          <Styled.SubTitle>6 сессий для поддержания и укрепления психологического состояния</Styled.SubTitle>
-          <Styled.Description>
-            Этот пакет включает шесть встреч, в ходе которых мы будем систематически работать над вашими запросами. 
-            Пакет "Стабильность" идеально подходит для тех, кто стремится сохранить и укрепить достигнутые результаты, 
-            а также нуждается в постоянной поддержке на пути к внутреннему равновесию.
-          </Styled.Description>
-          <Styled.Price>16000 Р</Styled.Price>
-        </Styled.CardFirst>
-        <Styled.CardSecond>
-          <Styled.Title>Пакет "Гармония"</Styled.Title>
-          <Styled.SubTitle>10 сессий для глубокого анализа и трансформации</Styled.SubTitle>
-          <Styled.Description>
-            Пакет "Гармония" рассчитан на длительное взаимодействие и включает десять встреч. Этот пакет подойдет тем, 
-            кто хочет глубже разобраться в своих проблемах и достичь устойчивых изменений в жизни. Мы будем работать над 
-            глубокими вопросами, развивать ваше внутреннее понимание и создавать устойчивые изменения, которые помогут вам 
-            достичь внутренней гармонии.
-          </Styled.Description>
-          <Styled.Price>32000 Р</Styled.Price>
-        </Styled.CardSecond>
-        <Styled.CardThird>
-          <Styled.Title>Встреча по установлению контакта</Styled.Title>
-          <Styled.SubTitle>Знакомство и первый шаг к пониманию</Styled.SubTitle>
-          <Styled.Description>
-            Первая встреча направлена на установление контакта и понимание ваших потребностей. В ходе этой встречи вы 
-            сможете рассказать о своих проблемах и ожиданиях, а я, в свою очередь, помогу вам сформировать представление
-            о возможных подходах к решению ваших запросов. Мы обсудим ваши цели и создадим план дальнейшего взаимодействия.
-            Это первая и самая главная ступенька на пути к улучшению вашего эмоционального состояния.
-          </Styled.Description>
-          <Styled.Image src='src/assets/img.svg' />
-          <Styled.Price>4000 Р</Styled.Price>
-        </Styled.CardThird>
-      </Styled.Cards>
-      <Message>
-        Каждый клиент для меня — уникальный человек, и я принимаю его таким, какой он есть, 
-        без ярлыков и оценок. На моих сессиях вы всегда найдете поддержку и внимание к своей 
-        личности. Я помогу вам взглянуть на свою жизнь под новым углом, исследовать скрытые стороны 
-        и создать собственные траектории личностного развития.
-      </Message>
-    </Styled.Container>
+  const CardsContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 900px; 
+    padding: 60px 10px 0 10px;
+    border-radius: 10px;
+  `;
+
+  const CardsFlexBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+  `;
+
+  const Card1 = styled.div`
+    border: 1px solid var(--accent-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    flex-grow: 1;
+  `;
+  const Card2 = styled.div`
+    border: 1px solid var(--accent-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+    flex-grow: 1;
+  `;
+  const Card3 = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--accent-color);
+    padding: 20px;
+    border-radius: 10px;
+    flex-grow: 1;
+  `;
+
+  const CardTitle = styled.h2`
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  `;
+
+  const CardSubTitle = styled.h2`
+    margin: 0;
+    font-weight: 300;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    width: 300px;
+    margin-bottom: 5px;
+  `;
+
+  const CardText = styled.p`
+    font-size: 1rem;
+    max-width: 350px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+  `;
+  const Content = styled.div``;
+
+  const PriceContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  `;
+
+  const OldPrice = styled.span`
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    text-decoration: line-through;
+  `;
+
+  const NewPrice = styled.span`
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--text-color);
+  `;
+
+  const Info = styled.div`
+    margin-left: 140px;
+    font-size: 0.8rem;
+    text-align: end;
+    color: var(--accent-color);
+  `;
+
+  export const Price = () => (
+    <CardsContainer>
+      <CardsFlexBox>
+        <Card1>
+          <CardTitle>ПАКЕТ «СТАБИЛЬНОСТЬ»</CardTitle>
+          <CardSubTitle>4 сессии для поддержания и укрепления психологического состояния.</CardSubTitle>
+          <CardText>
+            Этот пакет включает четыре встречи, в ходе которых мы будем систематически работать над вашим состоянием.
+            Пакет «СТАБИЛЬНОСТЬ» создан для того, чтобы вы смогли закрепить достигнутый результат, выработать устойчивость и вернуться на путь к внутреннему равновесию.
+          </CardText>
+          <PriceContainer>
+            <OldPrice>16000 ₽</OldPrice>
+            <NewPrice>14000 ₽</NewPrice>
+          </PriceContainer>
+        </Card1>
+        <Card2>
+          <CardTitle>ПАКЕТ «ГАРМОНИЯ»</CardTitle>
+          <CardSubTitle>10 сессий для глубокого анализа и трансформации.</CardSubTitle>
+          <CardText>
+            Пакет «Гармония» включает 10 встреч, в ходе которых мы будем глубоко анализировать ваше состояние,
+            исследовать причины ваших трудностей и работать над их устранением.
+            Эти сессии помогут вам найти новые пути для развития и достижения внутренней гармонии.
+          </CardText>
+          <PriceContainer>
+            <OldPrice>40000 ₽</OldPrice>
+            <NewPrice>32000 ₽</NewPrice>
+          </PriceContainer>
+        </Card2>
+      </CardsFlexBox>
+      <CardsFlexBox>
+        <Card3>
+          <Content>
+            <CardTitle>ИНДИВИДУАЛЬНАЯ КОНСУЛЬТАЦИЯ</CardTitle>
+            <CardSubTitle>Знакомство и первый шаг к пониманию.</CardSubTitle>
+            <CardText>
+              Первая встреча направлена на установление контакта и первичное исследование запроса.
+              В ходе консультации мы обсудим основные темы, которые волнуют вас, и определим возможные пути работы.
+              Если вы готовы начать работу над собой, это идеальный первый шаг.
+              Консультация также может включать рекомендации по пути и укреплению вашего эмоционального состояния.
+            </CardText>
+          </Content>
+          <PriceContainer>
+            <NewPrice>4000 ₽</NewPrice>
+            <Info>* Для всех, кто приходит в терапию, стоимость фиксируется на полгода с момента первой встречи.</Info>
+          </PriceContainer>
+        </Card3>
+      </CardsFlexBox>
+    </CardsContainer>
   );
-};
