@@ -1,3 +1,4 @@
+import { Message } from 'presentation/components/Message/index.tsx';
 import { Styled } from './styles.ts';
 
 export const Price = () => {
@@ -38,6 +39,11 @@ export const Price = () => {
           <Styled.Price>4000 Р</Styled.Price>
         </Styled.CardThird>
       </Styled.Cards>
+      <Message>
+        Здесь вы найдете информацию о стоимости моих услуг.
+        Я предлагаю гибкий подход и доступные цены. Если у 
+        вас есть вопросы, обращайтесь, я с радостью помогу!
+      </Message>
     </Styled.Container>
   );
 };

@@ -58,7 +58,11 @@ export const DrawingBoard: React.FC = observer(() => {
       />
       <ToolButtons />
       <ToolSizeButtons />
-      <Message />
+      <Message>
+        Привет, меня зовут Ира!
+        Рада вас видеть на моем сайте. Здесь вы найдете информацию о том, как я могу помочь вам достичь внутренней гармонии. 
+        Давайте вместе сделаем первый шаг к вашему благополучию!
+      </Message>
     </Styled.Container>
   );
 });

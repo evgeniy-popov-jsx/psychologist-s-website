@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Styled } from './styles';
 
-export const Message: React.FC = () => {
+export const Message: React.FC<{ children: string }> = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -19,8 +19,18 @@ export const Message: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <Styled.Message>
-      <span>Привет, меня зовут Ира! Я психолог и просто хороший человечке. Живу не тужу, напиши свой запрос</span>
+    <Styled.Message
+      initial={{ opacity: 0, y: -20, scale: 0.8 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -20, scale: 0.8 }}
+      transition={{ 
+        duration: 0.5, 
+        type: "spring",
+        stiffness: 150,
+        damping: 10
+      }} 
+    >
+      <Styled.Span>{children}</Styled.Span>
       <Styled.CloseButton onClick={handleClose}>✖</Styled.CloseButton>
     </Styled.Message>
   );

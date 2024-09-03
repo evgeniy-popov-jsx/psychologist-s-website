@@ -1,7 +1,8 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-const Message = styled.div`
-  position: absolute;
+const Message = styled(motion.div)`
+  position: fixed;
   top: 20px;
   right: 20px;
   max-width: 300px;
@@ -43,15 +44,19 @@ const CloseButton = styled.button`
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: #999;
+  color: var(--bg-color);
   padding: 0;
   
   &:hover {
-    color: #333;
+    color: var(--text-color);
   }
+`;
+const Span = styled.span`
+  color: var(--bg-color);
 `;
 
 export const Styled = {
   Message,
-  CloseButton
+  CloseButton,
+  Span
 };

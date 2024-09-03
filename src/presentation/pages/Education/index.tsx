@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from './components/link/index.tsx';
 import { Styled } from './styles.ts';
 import { motion } from 'framer-motion';
+import { Message } from 'presentation/components/Message/index.tsx';
 
 export const Educations = () => {
   const [links, setLinks] = useState<JSX.Element[]>([]);
@@ -32,6 +33,10 @@ export const Educations = () => {
   return (
     <Styled.Container>
       {links}
+      <Message>
+        Моя практика основана на серьезном образовании и постоянном развитии. 
+        Я всегда применяю современные методы, чтобы помочь вам наилучшим образом.
+      </Message>
       <Styled.BlurFooter />
     </Styled.Container>
   );
