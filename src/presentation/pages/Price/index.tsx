@@ -72,6 +72,11 @@ import styled from 'styled-components';
     align-items: end;
   `;
 
+  const Image = styled.img`
+    width: 100%;
+    height: 300px;
+  `;
+
   const OldPrice = styled.span`
     font-size: 1.5rem;
     color: var(--accent-color);
@@ -131,6 +136,7 @@ import styled from 'styled-components';
               Если вы готовы начать работу над собой, это идеальный первый шаг.
               Консультация также может включать рекомендации по пути и укреплению вашего эмоционального состояния.
             </CardText>
+            <Image src={'src/assets/image.svg'}></Image>
           </Content>
           <PriceContainer>
             <NewPrice>4000 ₽</NewPrice>
