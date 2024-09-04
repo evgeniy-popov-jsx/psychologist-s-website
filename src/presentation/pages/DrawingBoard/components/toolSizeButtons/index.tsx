@@ -28,7 +28,7 @@ export const ToolSizeButtons: React.FC = observer(() => {
 
   return (
     <Styled.ToolBtns>
-      <audio ref={hoverSoundRef} src="src/assets/hover-sound.wav" preload="auto" />
+      <audio ref={hoverSoundRef} src="/hover-sound.wav" preload="auto" />
       {lineWidth.map((size)=>{
         const isActive = drawingStore.currentLineWidth === size;
         return (
