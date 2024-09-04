@@ -6,43 +6,43 @@ export const Photos = () => {
   const images = [
     {
       id: 1,
-      url: 'src/assets/1.jpg',
+      url: '/1.jpg',
     },
     {
       id: 2,
-      url: 'src/assets/2.jpg',
+      url: '/2.jpg',
     },
     {
       id: 3,
-      url: 'src/assets/3.jpg',
+      url: '/3.jpg',
     },
     {
       id: 4,
-      url: 'src/assets/4.jpg',
+      url: '/4.jpg',
     },
     {
       id: 5,
-      url: 'src/assets/5.jpg',
+      url: '/5.jpg',
     },
     {
       id: 6,
-      url: 'src/assets/1.jpg',
+      url: '/1.jpg',
     },
     {
       id: 7,
-      url: 'src/assets/2.jpg',
+      url: '/2.jpg',
     },
     {
       id: 8,
-      url: 'src/assets/3.jpg',
+      url: '/3.jpg',
     },
     {
       id: 9,
-      url: 'src/assets/4.jpg',
+      url: '/4.jpg',
     },
     {
       id: 10,
-      url: 'src/assets/5.jpg',
+      url: '/5.jpg',
     }
   ];
   

@@ -154,7 +154,7 @@ import styled from 'styled-components';
               Консультация также может включать рекомендации по пути и укреплению вашего эмоционального состояния.
             </CardText>
             <ImageContainer>
-              <Image src={'src/assets/image.svg'}></Image>
+              <Image src={'/image.svg'}></Image>
             </ImageContainer>
           </Content>
           <PriceContainer>
