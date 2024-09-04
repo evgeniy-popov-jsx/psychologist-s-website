@@ -26,7 +26,7 @@ export const Message: React.FC<{ children: string }> = ({ children }) => {
       transition={{ 
         duration: 0.5, 
         type: "spring",
-        stiffness: 150,
+        stiffness: 110,
         damping: 10
       }} 
     >

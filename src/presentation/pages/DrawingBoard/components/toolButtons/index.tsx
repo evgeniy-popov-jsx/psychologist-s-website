@@ -44,7 +44,7 @@ export const ToolButtons: React.FC = observer(() => {
           placement="bottom"
           color={styles.bgColor}
           overlayInnerStyle={{color: styles.color}}
-          // destroyTooltipOnHide
+          destroyTooltipOnHide
         >
           <Styled.BtnColorPicker $color={color} />
         </Tooltip>
@@ -90,7 +90,7 @@ export const ToolButtons: React.FC = observer(() => {
           destroyTooltipOnHide
         >
         <Styled.Button onClick={handleResetCanvas}>
-          X
+          <Styled.ClearIcon />
         </Styled.Button>
       </Tooltip>
     </Styled.ToolBtns>

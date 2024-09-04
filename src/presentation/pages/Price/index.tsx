@@ -1,4 +1,5 @@
-  import { Message } from 'presentation/components/Message';
+  import { motion } from 'framer-motion';
+import { Message } from 'presentation/components/Message';
 import styled from 'styled-components';
 
   const CardsContainer = styled.div`
@@ -16,7 +17,7 @@ import styled from 'styled-components';
     flex-basis: 50%;
   `;
 
-  const Card1 = styled.div`
+  const Card1 = styled(motion.div)`
     border: 1px solid var(--accent-color);
     padding: 20px;
     border-radius: 10px;
@@ -24,14 +25,14 @@ import styled from 'styled-components';
     margin-right: 20px;
     flex-grow: 1;
   `;
-  const Card2 = styled.div`
+  const Card2 = styled(motion.div)`
     border: 1px solid var(--accent-color);
     padding: 20px;
     border-radius: 10px;
     margin-right: 20px;
     flex-grow: 1;
   `;
-  const Card3 = styled.div`
+  const Card3 = styled(motion.div)`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -71,10 +72,14 @@ import styled from 'styled-components';
     flex-direction: column;
     align-items: end;
   `;
+  const ImageContainer = styled.div`
+    width: 100%;
+    height: 300px;
+  `;
 
   const Image = styled.img`
     width: 100%;
-    height: 300px;
+    height: 100%;
   `;
 
   const OldPrice = styled.span`
@@ -99,7 +104,11 @@ import styled from 'styled-components';
   export const Price = () => (
     <CardsContainer>
       <CardsFlexBox>
-        <Card1>
+        <Card1         
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <CardTitle>ПАКЕТ «СТАБИЛЬНОСТЬ»</CardTitle>
           <CardSubTitle>4 сессии для поддержания и укрепления психологического состояния.</CardSubTitle>
           <CardText>
@@ -111,7 +120,11 @@ import styled from 'styled-components';
             <NewPrice>14000 ₽</NewPrice>
           </PriceContainer>
         </Card1>
-        <Card2>
+        <Card2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <CardTitle>ПАКЕТ «ГАРМОНИЯ»</CardTitle>
           <CardSubTitle>10 сессий для глубокого анализа и трансформации.</CardSubTitle>
           <CardText>
@@ -126,7 +139,11 @@ import styled from 'styled-components';
         </Card2>
       </CardsFlexBox>
       <CardsFlexBox>
-        <Card3>
+        <Card3
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <Content>
             <CardTitle>ИНДИВИДУАЛЬНАЯ КОНСУЛЬТАЦИЯ</CardTitle>
             <CardSubTitle>Знакомство и первый шаг к пониманию.</CardSubTitle>
@@ -136,7 +153,9 @@ import styled from 'styled-components';
               Если вы готовы начать работу над собой, это идеальный первый шаг.
               Консультация также может включать рекомендации по пути и укреплению вашего эмоционального состояния.
             </CardText>
-            <Image src={'src/assets/image.svg'}></Image>
+            <ImageContainer>
+              <Image src={'src/assets/image.svg'}></Image>
+            </ImageContainer>
           </Content>
           <PriceContainer>
             <NewPrice>4000 ₽</NewPrice>

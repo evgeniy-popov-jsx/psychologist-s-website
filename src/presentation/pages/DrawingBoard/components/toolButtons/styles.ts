@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Eraser from '../../icons/eraser.svg?react';
 import Export from '../../icons/export.svg?react';
 import Brush from '../../icons/brush.svg?react';
+import Clear from '../../icons/clear.svg?react';
 
 const ToolBtns = styled.div`
   position: absolute;
@@ -46,6 +47,16 @@ const ExportIcon = styled(Export)`
     fill: var(--accent-color);
   }
 `;
+const ClearIcon = styled(Clear)`
+  width: 32px;
+  height: 32px;
+  fill: var(--text-color);
+  cursor: pointer;
+
+  &:hover path{
+    fill: var(--accent-color);
+  }
+`;
 
 const Button = styled.button`
   width: 32px;
@@ -80,4 +91,5 @@ export const Styled = {
   EraserIcon,
   ExportIcon,
   BrushIcon,
+  ClearIcon
 };
