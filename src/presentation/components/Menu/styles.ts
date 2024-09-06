@@ -29,6 +29,7 @@ const Container = styled.div`
   border-radius: 12.5px;
   z-index: 3;
   animation: ease 0.8s forwards ${Open};
+  cursor: default;
 `;
 
 const PaintIcon = styled(Paint)<{ $active: boolean }>`
