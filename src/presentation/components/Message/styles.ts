@@ -10,6 +10,7 @@ const Message = styled(motion.div)`
   background: var(--accent-color);
   padding: 30px 25px; 
   border-radius: 8px;
+  cursor: default;
   z-index: 4;
 
   &::before {

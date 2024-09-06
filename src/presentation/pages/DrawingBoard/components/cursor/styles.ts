@@ -32,7 +32,7 @@ const CursorCircle = styled.div.attrs<
   position: absolute;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 1;
 
   svg {
     width: 24px;
@@ -41,17 +41,7 @@ const CursorCircle = styled.div.attrs<
   }
 `;
 
-const Canvas = styled.canvas`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-`;
-
 export const Styled = {
-  Canvas,
   CursorCircle,
   GlobalStyle
 };
