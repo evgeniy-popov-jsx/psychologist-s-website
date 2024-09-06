@@ -113,22 +113,35 @@ class DrawingStore {
     if (!this.backgroundCanvas || !this.drawingCanvas || !this.drawingContext) return;
 
     const tempCanvas = document.createElement('canvas');
-    tempCanvas.width = this.drawingCanvas.width;
-    tempCanvas.height = this.drawingCanvas.height;
+    const width = this.drawingCanvas.width / 2;
+    const height = this.drawingCanvas.height / 2;
+
+    tempCanvas.width = width;
+    tempCanvas.height = height;
     const tempContext = tempCanvas.getContext('2d');
 
     if (tempContext) {
-      tempContext.drawImage(this.backgroundCanvas, 0, 0);
-      tempContext.drawImage(this.drawingCanvas, 0, 0);
+      tempContext.drawImage(this.backgroundCanvas, 0, 0, width, height);
+      tempContext.drawImage(this.drawingCanvas, 0, 0, width, height);
 
       const dataUrl = tempCanvas.toDataURL('image/png');
-      const link = document.createElement('a');
+      
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !('MSStream' in window);
 
-      link.href = dataUrl;
-      link.download = 'screenshot.png';
-      link.click();
+      if (isIOS) {
+        const newWindow = window.open('', '_blank');
+        if (newWindow) {
+          newWindow.document.write(`<img src="${dataUrl}" />`);
+        }
+      } else {
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = 'screenshot.png';
+        link.click();
+      }
     }
   }
+
 
   resetCanvas() {
     if (this.drawingCanvas && this.drawingContext) {
