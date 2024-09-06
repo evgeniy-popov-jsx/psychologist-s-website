@@ -5,6 +5,7 @@ import { Styled } from './styles';
 import { ToolButtons } from './components/toolButtons';
 import { ToolSizeButtons } from './components/toolSizeButtons';
 import { Message } from 'presentation/components/Message';
+import { CustomCursor } from './components/cursor';
 
 export const DrawingBoard: React.FC = observer(() => {
   const drawingCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -65,6 +66,7 @@ export const DrawingBoard: React.FC = observer(() => {
         непрерывно учусь и совершенствую свои навыки, чтобы быть максимально эффективной в 
         нашем взаимодействии.
       </Message>
+      <CustomCursor />
     </Styled.Container>
   );
 });
