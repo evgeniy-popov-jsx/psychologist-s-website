@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { drawingStore } from 'application/stores/drawingStore';
 import { Color, convertColorToString } from 'utils/convertColor';
@@ -35,6 +35,18 @@ export const ToolButtons: React.FC = observer(() => {
     color: '#4E5A82 ',
     bgColor: '#FFEDEB',
   };
+
+  const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+
+  useEffect(() => {
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, []);
 
   return (
     <Styled.ToolBtns>
