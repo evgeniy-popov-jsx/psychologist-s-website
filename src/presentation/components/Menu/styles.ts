@@ -35,7 +35,6 @@ const PaintIcon = styled(Paint)<{ $active: boolean }>`
   width: 27.67px;
   height: 25.64px;
   padding: 2px;
-  cursor: pointer;
 
   path {
     fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
@@ -50,7 +49,6 @@ const PhotosIcon = styled(Photos)<{ $active: boolean }>`
   width: 32.35px;
   height: 25.26px;
   padding: 2px;
-  cursor: pointer;
 
   path {
     fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
@@ -65,7 +63,6 @@ const EducationIcon = styled(Education)<{ $active: boolean }>`
   width: 23.04px;
   height: 25.44px;
   padding: 2px;
-  cursor: pointer;
 
   path {
     fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
@@ -80,7 +77,6 @@ const PriceIcon = styled(Price)<{ $active: boolean }>`
   width: 27.96px;
   height: 26.51px;
   padding: 2px;
-  cursor: pointer;
 
   path {
     fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
@@ -95,7 +91,6 @@ const TelegramIcon = styled(Telegram)<{ $active: boolean }>`
   width: 28.93px;
   height: 25.97px;
   padding: 2px;
-  cursor: pointer;
 
   path {
     fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};

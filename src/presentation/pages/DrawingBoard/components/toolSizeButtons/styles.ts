@@ -53,6 +53,7 @@ const ToolBtns = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 9px;
+  cursor: none;
 `;
 
 const Circle = styled.div<{ $size: number, $active: boolean }>`
@@ -64,6 +65,7 @@ const Circle = styled.div<{ $size: number, $active: boolean }>`
   height: ${props => (props.$active ? '100%' : `${props.$size}px`)};
   border-radius: ${props => (props.$active ? '20%' : '50%')};
   background-color: var(--text-color);
+  cursor: none;
 `;
 
 const Button = styled.button`
@@ -73,7 +75,7 @@ const Button = styled.button`
   background: none;
   border: 1px solid var(--text-color);
   border-radius: 50%;
-  cursor: pointer;
+  cursor: none;
 
   &:hover ${Circle} {
     animation: ${pulse} 0.32s ease-out forwards;

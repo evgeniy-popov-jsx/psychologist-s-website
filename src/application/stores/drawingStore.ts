@@ -57,10 +57,12 @@ class DrawingStore {
 
     if (this.isErasing) {
       this.drawingContext.globalCompositeOperation = 'destination-out';
-      this.drawingContext.lineWidth = 20;
+      this.drawingContext.lineWidth = this.currentLineWidth;
+      this.drawingContext.lineCap = 'square';
     } else {
       this.drawingContext.globalCompositeOperation = 'source-over';
       this.drawingContext.lineWidth = this.currentLineWidth;
+      this.drawingContext.lineCap = 'round';
     }
 
     this.drawingContext.globalAlpha = 0.5;
