@@ -17,55 +17,53 @@ export const DrawingBoard: React.FC = observer(() => {
     }
   }, []);
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    drawingStore.startDrawing(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    drawingStore.draw(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
-    const x = e.touches[0].clientX - (drawingCanvasRef.current?.getBoundingClientRect().left ?? 0);
-    const y = e.touches[0].clientY - (drawingCanvasRef.current?.getBoundingClientRect().top ?? 0);
+  const handlePointerDown = (e: PointerEvent) => {
+    e.preventDefault();
+    const x = e.pageX - (drawingCanvasRef.current?.getBoundingClientRect().left ?? 0);
+    const y = e.pageY - (drawingCanvasRef.current?.getBoundingClientRect().top ?? 0);
     drawingStore.startDrawing(x, y);
   };
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {
-    const x = e.touches[0].clientX - (drawingCanvasRef.current?.getBoundingClientRect().left ?? 0);
-    const y = e.touches[0].clientY - (drawingCanvasRef.current?.getBoundingClientRect().top ?? 0);
-    drawingStore.draw(x, y);
+  const handlePointerMove = (e: PointerEvent) => {
+    if (drawingStore.isDrawing) {
+      const x = e.pageX - (drawingCanvasRef.current?.getBoundingClientRect().left ?? 0);
+      const y = e.pageY - (drawingCanvasRef.current?.getBoundingClientRect().top ?? 0);
+      drawingStore.draw(x, y);
+    }
   };
 
-  const handleFinishDrawing = () => {
+  const handlePointerUp = () => {
     drawingStore.finishDrawing();
   };
 
+  useEffect(() => {
+    const canvas = drawingCanvasRef.current;
+    if (canvas) {
+      canvas.addEventListener('pointerdown', handlePointerDown);
+      canvas.addEventListener('pointermove', handlePointerMove);
+      canvas.addEventListener('pointerup', handlePointerUp);
+      canvas.addEventListener('pointerleave', handlePointerUp);
+      canvas.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
+      canvas.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+
+      return () => {
+        canvas.removeEventListener('pointerdown', handlePointerDown);
+        canvas.removeEventListener('pointermove', handlePointerMove);
+        canvas.removeEventListener('pointerup', handlePointerUp);
+        canvas.removeEventListener('pointerleave', handlePointerUp);
+        canvas.removeEventListener('touchstart', (e) => e.preventDefault());
+        canvas.removeEventListener('touchmove', (e) => e.preventDefault());
+      };
+    }
+  }, []);
+
   return (
     <Styled.Container>
-      <Styled.Canvas 
-        ref={backgroundCanvasRef} 
-        style={{ zIndex: 0 }} 
-      />
-      <Styled.Canvas
-        ref={drawingCanvasRef}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleFinishDrawing}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleFinishDrawing}
-        style={{ zIndex: 1 }}
-      />
+      <Styled.Canvas ref={backgroundCanvasRef} style={{ zIndex: 0 }} />
+      <Styled.Canvas ref={drawingCanvasRef} style={{ zIndex: 1 }} />
       <ToolButtons />
       <ToolSizeButtons />
-      <Message>
-        Привет! Меня зовут Ирина Гречушенко, я практикующий психолог-консультант. 
-        Моя цель — помочь вам понять себя, найти внутреннюю опору, справляться с 
-        жизненными трудностями и находить гармонию с собой и окружающим миром. Я 
-        непрерывно учусь и совершенствую свои навыки, чтобы быть максимально эффективной в 
-        нашем взаимодействии.
-      </Message>
+      <Message>Привет! Я ваш психолог.</Message>
       <CustomCursor />
     </Styled.Container>
   );

@@ -8,14 +8,15 @@ import { Styled } from './styles';
 export const CustomCursor: React.FC = observer(() => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handlePointerMove = (e: PointerEvent) => {
     setPosition({ x: e.pageX, y: e.pageY });
   };
 
   useEffect(() => {
-    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('pointermove', handlePointerMove);
+
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('pointermove', handlePointerMove);
     };
   }, []);
 
