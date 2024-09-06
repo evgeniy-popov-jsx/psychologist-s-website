@@ -13,13 +13,14 @@ const ToolBtns = styled.div`
   display: flex;
   gap: 15px;
   align-items: center;
+  cursor: none;
 `;
 
 const EraserIcon = styled(Eraser)`
   width: 32px;
   height: 32px;
   fill: var(--text-color);
-  cursor: pointer;
+  cursor: none;
 
   &:hover {
     fill: var(--accent-color);
@@ -30,7 +31,7 @@ const BrushIcon = styled(Brush)`
   width: 30px;
   height: 29px;
   fill: var(--text-color);
-  cursor: pointer;
+  cursor: none;
 
   &:hover path {
     fill: var(--accent-color);
@@ -41,7 +42,7 @@ const ExportIcon = styled(Export)`
   width: 32px;
   height: 32px;
   fill: var(--text-color);
-  cursor: pointer;
+  cursor: none;
 
   &:hover {
     fill: var(--accent-color);
@@ -51,7 +52,7 @@ const ClearIcon = styled(Clear)`
   width: 32px;
   height: 32px;
   fill: var(--text-color);
-  cursor: pointer;
+  cursor: none;
 
   &:hover path{
     fill: var(--accent-color);
@@ -65,10 +66,11 @@ const Button = styled.button`
   color: var(--text-color);
   border: none;
   background: none;
-  cursor: pointer;
+  cursor: none;
 `;
 
 const ColorPicker = styled(ANTColorPicker)`
+  cursor: none;
 `;
 
 const BtnColorPicker = styled.button.attrs<{ $color: string }>(props => ({
@@ -80,7 +82,7 @@ const BtnColorPicker = styled.button.attrs<{ $color: string }>(props => ({
   height: 32px;
   border-radius: 6.5px;
   border: 1px solid var(--text-color);
-  cursor: pointer;
+  cursor: none;
 `;
 
 export const Styled = {
