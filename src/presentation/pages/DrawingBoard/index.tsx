@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { drawingStore } from 'application/stores/drawingStore';
 import { Styled } from './styles';
 import { ToolButtons } from './components/toolButtons';
@@ -10,6 +10,22 @@ import { CustomCursor } from './components/cursor';
 export const DrawingBoard: React.FC = observer(() => {
   const drawingCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const backgroundCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+
+  useEffect(() => {
+    const updateWindowSize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('resize', updateWindowSize);
+
+    return () => {
+      window.removeEventListener('resize', updateWindowSize);
+    };
+  }, []);
 
   useEffect(() => {
     if (backgroundCanvasRef.current && drawingCanvasRef.current) {
@@ -58,7 +74,7 @@ export const DrawingBoard: React.FC = observer(() => {
   }, []);
 
   return (
-    <Styled.Container>
+    <Styled.Container $width={windowSize.width} $height={windowSize.height} >
       <Styled.Canvas ref={backgroundCanvasRef} style={{ zIndex: 0 }} />
       <Styled.Canvas ref={drawingCanvasRef} style={{ zIndex: 1 }} />
       <ToolButtons />

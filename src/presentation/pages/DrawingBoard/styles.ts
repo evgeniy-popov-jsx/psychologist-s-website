@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+const Container = styled.div<{ $width: number, $height: number }>`
   position: relative;
-  height: 100vh;
-  width: 100vw;
+  height: ${({$height})=> $height}px;
+  width: ${({$width})=> $width}px;
   overflow: hidden;
   margin: 0;
   cursor: none;
