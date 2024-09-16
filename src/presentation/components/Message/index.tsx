@@ -4,13 +4,16 @@ import { messageManagerStore } from 'application/stores/messageStore';
 
 export const Message: React.FC<{ id: string, children: string }> = ({ id, children }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [delay, setDelay] = useState(1.3);
 
   useEffect(() => {
     if (messageManagerStore.isMessageShown(id)) {
       setIsVisible(true);
+      setDelay(0);
     } else {
       const timer = setTimeout(() => {
         messageManagerStore.setIsMessageShown(id);
+        setDelay(0);
       }, 1300);
 
       return () => clearTimeout(timer);
@@ -36,7 +39,8 @@ export const Message: React.FC<{ id: string, children: string }> = ({ id, childr
         duration: 0.5, 
         type: "spring",
         stiffness: 110,
-        damping: 10
+        damping: 10,
+        delay: delay,
       }} 
     >
       <Styled.Span>{children}</Styled.Span>
