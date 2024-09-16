@@ -51,8 +51,11 @@ const ExportIcon = styled(Export)`
 const ClearIcon = styled(Clear)`
   width: 32px;
   height: 32px;
-  fill: var(--text-color);
   cursor: none;
+  
+  path {
+    fill: var(--text-color);
+  }
 
   &:hover path{
     fill: var(--accent-color);

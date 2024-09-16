@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Question from './icons/question.svg?react';
 import styled from 'styled-components';
 
 const Message = styled(motion.div)`
@@ -52,12 +53,30 @@ const CloseButton = styled.button`
     color: var(--text-color);
   }
 `;
+
 const Span = styled.span`
   color: var(--bg-color);
+`;
+
+const QuestionIcon = styled(Question)`
+  position: fixed;
+  top: 26px;
+  right: 30px;
+  width: 24px;
+  height: 24px;
+  path {
+    fill: var(--text-color);
+  }
+  &:hover path {
+    fill: var(--accent-color);
+  }
+  z-index: 10;
+  cursor: pointer;
 `;
 
 export const Styled = {
   Message,
   CloseButton,
-  Span
+  Span,
+  QuestionIcon
 };

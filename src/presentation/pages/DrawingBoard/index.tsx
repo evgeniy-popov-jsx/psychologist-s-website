@@ -79,7 +79,7 @@ export const DrawingBoard: React.FC = observer(() => {
       <Styled.Canvas ref={drawingCanvasRef} style={{ zIndex: 1 }} />
       <ToolButtons />
       <ToolSizeButtons />
-      <Message>Привет! Я ваш психолог.</Message>
+      <Message id={'about'}>Привет! Я ваш психолог.</Message>
       <CustomCursor />
     </Styled.Container>
   );
