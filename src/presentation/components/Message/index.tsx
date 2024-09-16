@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { Styled } from './styles';
+import { messageManagerStore } from 'application/stores/messageStore';
 
-export const Message: React.FC<{ children: string }> = ({ children }) => {
+export const Message: React.FC<{ id: string, children: string }> = ({ id, children }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    if (messageManagerStore.isMessageShown(id)) {
       setIsVisible(true);
-    }, 1300);
+    } else {
+      const timer = setTimeout(() => {
+        messageManagerStore.setIsMessageShown(id);
+      }, 1300);
 
-    return () => clearTimeout(timer);
-  }, []);
+      return () => clearTimeout(timer);
+    }
+  }, [id]);
 
-  const handleClose = () => {
-    setIsVisible(false);
+  const handleToggle = () => {
+    setIsVisible(prev => !prev);
   };
 
-  if (!isVisible) return null;
+  if (isVisible) {
+    return (
+        <Styled.QuestionIcon onClick={handleToggle} />
+    );
+  }
 
   return (
     <Styled.Message
@@ -31,7 +40,7 @@ export const Message: React.FC<{ children: string }> = ({ children }) => {
       }} 
     >
       <Styled.Span>{children}</Styled.Span>
-      <Styled.CloseButton onClick={handleClose}>✖</Styled.CloseButton>
+      <Styled.CloseButton onClick={handleToggle}>✖</Styled.CloseButton>
     </Styled.Message>
   );
 };
