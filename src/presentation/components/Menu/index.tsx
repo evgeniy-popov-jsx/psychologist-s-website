@@ -17,6 +17,17 @@ export const Menu = () => {
   return (
     <Styled.Container>
       <Tooltip
+        title={'Главная'}
+        placement='bottom'
+        color={styles.bgColor}
+        overlayInnerStyle={{ color: styles.color }}
+        destroyTooltipOnHide
+      >
+        <Styled.Link to={'/'}>
+          <Styled.HomeIcon $active={location.pathname === '/'} />
+        </Styled.Link>
+      </Tooltip>
+      <Tooltip
         title={'Рисовашка'}
         placement='bottom'
         color={styles.bgColor}

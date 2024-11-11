@@ -4,7 +4,8 @@ import Photos from 'presentation/components/Menu/icons/photos.svg?react';
 import Education from 'presentation/components/Menu/icons/education.svg?react';
 import Price from 'presentation/components/Menu/icons/price.svg?react';
 import Telegram from 'presentation/components/Menu/icons/telegram.svg?react';
-import { Link as RLink} from 'react-router-dom';
+import Home from 'presentation/components/Menu/icons/home.svg?react';
+import { Link as RLink } from 'react-router-dom';
 
 const Open = keyframes`
   0% {
@@ -38,11 +39,29 @@ const PaintIcon = styled(Paint)<{ $active: boolean }>`
   padding: 2px;
 
   path {
-    fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
+    fill: ${({ $active }) =>
+      $active ? 'var(--text-color)' : 'var(--accent-color)'};
   }
 
   &:hover path {
     fill: var(--text-color);
+  }
+`;
+
+const HomeIcon = styled(Home)<{ $active: boolean }>`
+  width: 27px;
+  height: 26px;
+  padding: 2px;
+
+  path {
+    stroke: ${({ $active }) =>
+      $active ? 'var(--text-color)' : 'var(--accent-color)'};
+    fill: none;
+  }
+
+  &:hover path {
+    stroke: var(--text-color);
+    fill: none;
   }
 `;
 
@@ -52,7 +71,8 @@ const PhotosIcon = styled(Photos)<{ $active: boolean }>`
   padding: 2px;
 
   path {
-    fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
+    fill: ${({ $active }) =>
+      $active ? 'var(--text-color)' : 'var(--accent-color)'};
   }
 
   &:hover path {
@@ -66,7 +86,8 @@ const EducationIcon = styled(Education)<{ $active: boolean }>`
   padding: 2px;
 
   path {
-    fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
+    fill: ${({ $active }) =>
+      $active ? 'var(--text-color)' : 'var(--accent-color)'};
   }
 
   &:hover path {
@@ -80,7 +101,8 @@ const PriceIcon = styled(Price)<{ $active: boolean }>`
   padding: 2px;
 
   path {
-    fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
+    fill: ${({ $active }) =>
+      $active ? 'var(--text-color)' : 'var(--accent-color)'};
   }
 
   &:hover path {
@@ -94,7 +116,8 @@ const TelegramIcon = styled(Telegram)<{ $active: boolean }>`
   padding: 2px;
 
   path {
-    fill: ${({ $active }) => ($active ? 'var(--text-color)' : 'var(--accent-color)')};
+    fill: ${({ $active }) =>
+      $active ? 'var(--text-color)' : 'var(--accent-color)'};
   }
 
   &:hover path {
@@ -116,6 +139,7 @@ export const Styled = {
   PhotosIcon,
   EducationIcon,
   PriceIcon,
+  HomeIcon,
   TelegramIcon,
-  Link
+  Link,
 };
