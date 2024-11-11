@@ -1,9 +1,8 @@
-
 :root {
   --vh: 1vh;
-  --bg-color: #4E5A82;
-  --text-color: #FFEDEB;
-  --accent-color: #ADBFFD;
+  --bg-color: #4e5a82;
+  --text-color: #ffedeb;
+  --accent-color: #adbffd;
 }
 
 @font-face {

@@ -21,11 +21,19 @@ export const Main = () => {
       setMouseY(e.clientY - viewportHeight / 2);
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      setMouseX(touch.clientX - viewportWidth / 2);
+      setMouseY(touch.clientY - viewportHeight / 2);
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove);
 
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
   }, [viewportWidth]);
 
@@ -39,12 +47,14 @@ export const Main = () => {
   };
 
   return (
-    <Styled.Container>
+    <Styled.Container $width={viewportWidth} $height={viewportHeight}>
       <Styled.PreviewText>
-        Меня зовут Ирина Гречушенко я психолог-коснультант, и я работаю со всеми
-        этими запросами.
+        <Styled.Text>
+          Меня зовут Ирина Гречушенко я психолог-коснультант, и я работаю со
+          всеми этими запросами.
+        </Styled.Text>
+        <Styled.Link to={'/draw'}>О чём думаешь ты?</Styled.Link>
       </Styled.PreviewText>
-      <Styled.Link to={'/draw'}>О чём думаешь ты?</Styled.Link>
       <Styled.Card
         $rotate={-15}
         $mouseX={mouseX}
