@@ -3,4 +3,5 @@ export const ROUTES = {
   photos: '/photos',
   educations: '/educations',
   price: '/price',
+  draw: '/draw',
 };
