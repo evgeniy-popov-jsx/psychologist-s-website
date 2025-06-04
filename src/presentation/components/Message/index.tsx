@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { Styled } from './styles';
 import { messageManagerStore } from 'application/stores/messageStore';
 
-export const Message: React.FC<{ id: string; children: string }> = ({
+export const Message: React.FC<{ id: string; children: ReactNode }> = ({
   id,
   children,
 }) => {

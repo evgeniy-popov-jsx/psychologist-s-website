@@ -50,20 +50,13 @@ export const Main = () => {
     <Styled.Container $width={viewportWidth} $height={viewportHeight}>
       <Styled.PreviewText>
         <Styled.Text>
-          Меня зовут Ирина Гречушенко я психолог-коснультант, и я работаю со
-          всеми этими запросами.
+          Меня зовут Ирина Гречушенко, <br />я психолог-консультант и помогу разобраться с
+          любым из этих запросов.
         </Styled.Text>
-        <Styled.Link to={'/draw'}>О чём думаешь ты?</Styled.Link>
+        <Styled.Link to={'/draw'}>Обсудим?</Styled.Link>
       </Styled.PreviewText>
-      <Styled.Card
-        $rotate={-15}
-        $mouseX={mouseX}
-        $mouseY={mouseY}
-        $top={10}
-        $left={10}
-        $width={300}
-      >
-        {renderTextWithBreaks(inquiries.card1)}
+      <Styled.Card $rotate={-15} $mouseX={mouseX} $mouseY={mouseY} $top={10} $left={18}>
+        {renderTextWithBreaks(inquiries().card1)}
       </Styled.Card>
       <Styled.Card
         $rotate={-10}
@@ -71,20 +64,12 @@ export const Main = () => {
         $mouseY={mouseY}
         $top={25}
         $left={48}
-        $width={300}
         $blur
       >
-        {renderTextWithBreaks(inquiries.card2)}
+        {renderTextWithBreaks(inquiries().card2)}
       </Styled.Card>
-      <Styled.Card
-        $rotate={20}
-        $mouseX={mouseX}
-        $mouseY={mouseY}
-        $top={15}
-        $left={70}
-        $width={300}
-      >
-        {renderTextWithBreaks(inquiries.card3)}
+      <Styled.Card $rotate={20} $mouseX={mouseX} $mouseY={mouseY} $top={15} $left={70}>
+        {renderTextWithBreaks(inquiries().card3)}
       </Styled.Card>
       <Styled.Card
         $rotate={-10}
@@ -92,30 +77,28 @@ export const Main = () => {
         $mouseY={mouseY}
         $top={70}
         $left={15}
-        $width={300}
         $blur
       >
-        {renderTextWithBreaks(inquiries.card4)}
+        {renderTextWithBreaks(inquiries().card4)}
       </Styled.Card>
       <Styled.Card
-        $rotate={20}
+        $rotate={10}
         $mouseX={mouseX}
         $mouseY={mouseY}
-        $top={82}
-        $left={35}
-        $width={300}
+        $top={40}
+        $left={8}
+        $blur
       >
-        {renderTextWithBreaks(inquiries.card5)}
+        {renderTextWithBreaks(inquiries().card5)}
       </Styled.Card>
-      <Styled.Card
-        $rotate={20}
-        $mouseX={mouseX}
-        $mouseY={mouseY}
-        $top={55}
-        $left={68}
-        $width={300}
-      >
-        {renderTextWithBreaks(inquiries.card6)}
+      <Styled.Card $rotate={20} $mouseX={mouseX} $mouseY={mouseY} $top={82} $left={35}>
+        {renderTextWithBreaks(inquiries().card6)}
+      </Styled.Card>
+      <Styled.Card $rotate={20} $mouseX={mouseX} $mouseY={mouseY} $top={60} $left={72}>
+        {renderTextWithBreaks(inquiries().card7)}
+      </Styled.Card>
+      <Styled.Card $rotate={-20} $mouseX={mouseX} $mouseY={mouseY} $top={70} $left={58}>
+        {renderTextWithBreaks(inquiries().card8)}
       </Styled.Card>
     </Styled.Container>
   );

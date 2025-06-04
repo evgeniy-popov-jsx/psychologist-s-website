@@ -9,13 +9,17 @@ const Message = styled(motion.div)`
   max-width: 300px;
   margin-left: 20px;
   background: var(--accent-color);
-  padding: 30px 25px; 
+  padding: 30px 25px;
   border-radius: 8px;
   cursor: default;
   z-index: 4;
 
+  span {
+    font-style: italic;
+  }
+
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: -15px;
     right: 40px;
@@ -27,7 +31,7 @@ const Message = styled(motion.div)`
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: -16px;
     right: 40px;
@@ -48,7 +52,7 @@ const CloseButton = styled.button`
   font-size: 16px;
   color: var(--bg-color);
   padding: 0;
-  
+
   &:hover {
     color: var(--text-color);
   }
@@ -78,5 +82,5 @@ export const Styled = {
   Message,
   CloseButton,
   Span,
-  QuestionIcon
+  QuestionIcon,
 };
