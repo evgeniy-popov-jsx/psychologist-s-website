@@ -66,7 +66,6 @@ const Link = styled(RLink)`
 const Card = styled.div.attrs<{
   $top: number;
   $left: number;
-  $width: number;
   $mouseX: number;
   $mouseY: number;
   $rotate: number;
@@ -82,11 +81,12 @@ const Card = styled.div.attrs<{
   },
 }))`
   position: absolute;
+  display: block;
   top: ${(props) => `${props.$top}%`};
   left: ${(props) => `${props.$left}%`};
-  width: ${(props) => `${props.$width}px`};
   background-color: var(--accent-color);
   padding: 10px;
+  font-size: 20px;
   border-radius: 4px;
   color: var(--bg-color);
   user-select: none;
@@ -114,13 +114,11 @@ const Card = styled.div.attrs<{
     font-size: 15px;
     top: ${(props) => `${props.$top + 5}%`};
     left: ${(props) => `${props.$left - 5}%`};
-    width: ${(props) => `${props.$width - 80}px`};
   }
   @media (max-width: 760px) {
     font-size: 15px;
     top: ${(props) => `${props.$top}%`};
     left: ${(props) => `${props.$left - 10}%`};
-    width: ${(props) => `${props.$width - 80}px`};
     filter: blur(2px);
     &:hover {
       filter: none;
@@ -130,7 +128,6 @@ const Card = styled.div.attrs<{
     font-size: 15px;
     top: ${(props) => `${props.$top}%`};
     left: ${(props) => `${props.$left - 10}%`};
-    width: ${(props) => `${props.$width - 130}px`};
     filter: blur(2px);
     &:hover {
       filter: none;
@@ -140,7 +137,6 @@ const Card = styled.div.attrs<{
     font-size: 12px;
     top: ${(props) => `${props.$top}%`};
     left: ${(props) => `${props.$left - 15}%`};
-    width: ${(props) => `${props.$width - 130}px`};
     filter: blur(2px);
     &:hover {
       filter: none;
@@ -150,7 +146,6 @@ const Card = styled.div.attrs<{
     font-size: 12px;
     top: ${(props) => `${props.$top}%`};
     left: ${(props) => `${props.$left - 15}%`};
-    width: ${(props) => `${props.$width - 130}px`};
     filter: blur(2px);
     &:hover {
       filter: none;
